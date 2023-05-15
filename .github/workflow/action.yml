@@ -1,0 +1,13 @@
+name: learn-ci
+run-name: ${{ github.actor }} is learning CI
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: action/checkout@v3
+      - uses: action/setup-node@v3
+        with:
+          node-vesion: '14'
+      - run: npm install -g bats
+      - run: bats -v
